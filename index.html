@@ -1,0 +1,742 @@
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Syed Khalid Saleem — Financial Freedom Coach</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1551083700354722');fbq('track','PageView');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1551083700354722&ev=PageView&noscript=1"/></noscript>
+<style>
+/* ══ RESET & BASE ══ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+:root{
+  --cream:#faf7f0;
+  --cream2:#f2ede2;
+  --cream3:#e8e0d0;
+  --saffron:#d4620a;
+  --saffron2:#f07820;
+  --saffron3:#ffa040;
+  --teal:#0e7c6e;
+  --teal2:#12a898;
+  --ink:#1a1208;
+  --ink2:#2e2010;
+  --ink3:#4a3820;
+  --muted:#8a7a60;
+  --white:#fff;
+  --green:#25D366;
+  --head:'Fraunces',serif;
+  --body:'DM Sans',sans-serif;
+}
+body{font-family:var(--body);background:var(--cream);color:var(--ink);overflow-x:hidden;line-height:1.6;}
+img{display:block;max-width:100%;}
+button,a{cursor:pointer;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--saffron);}
+
+/* ══ MODAL ══ */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(26,18,8,.9);z-index:9999;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(10px);}
+.modal-overlay.active{display:flex;}
+.pbox{background:var(--white);border-radius:4px;padding:28px;max-width:460px;width:100%;position:relative;max-height:88vh;overflow-y:auto;}
+.pbox h3{color:var(--saffron);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin:12px 0 4px;}
+.pbox h3:first-of-type{margin-top:0;}
+.pbox p{color:var(--ink3);font-size:.78rem;line-height:1.7;}
+.mcls{position:absolute;top:10px;right:14px;background:none;border:none;color:var(--muted);font-size:20px;}
+.mcls:hover{color:var(--ink);}
+
+/* FORM */
+.fbox{background:var(--white);border-radius:4px;padding:32px 26px;max-width:430px;width:100%;position:relative;box-shadow:0 24px 60px rgba(26,18,8,.25),6px 6px 0 var(--saffron);}
+.ftitle{font-family:var(--head);font-size:1.5rem;font-weight:700;color:var(--ink);text-align:center;margin-bottom:2px;}
+.fsub{font-size:.72rem;color:var(--muted);text-align:center;margin-bottom:18px;letter-spacing:.04em;}
+.fg{margin-bottom:11px;}
+.fg label{display:block;font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:5px;}
+.fg input,.fg select{width:100%;padding:10px 13px;background:var(--cream);border:1.5px solid var(--cream3);border-radius:2px;font-family:var(--body);font-size:.88rem;color:var(--ink);outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.fg input::placeholder{color:var(--muted);}
+.fg select option{background:var(--white);}
+.fg input:focus,.fg select:focus{border-color:var(--saffron);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.fsend{width:100%;padding:13px;background:var(--teal);color:var(--white);font-family:var(--head);font-size:.95rem;font-weight:700;border:none;border-radius:2px;margin-top:7px;transition:all .25s;letter-spacing:.02em;}
+.fsend:hover{background:var(--teal2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(14,124,110,.35);}
+.fsend:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none;}
+.fstatus{text-align:center;font-size:.72rem;margin-top:8px;color:var(--saffron);}
+
+/* ══ NAVBAR ══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:56px;
+  background:var(--cream);
+  border-bottom:1px solid var(--cream3);
+  transition:box-shadow .3s;
+}
+nav.scrolled{box-shadow:0 2px 20px rgba(26,18,8,.08);}
+.nav-logo{font-family:var(--head);font-size:1.05rem;font-weight:700;color:var(--ink);letter-spacing:-.3px;}
+.nav-logo span{color:var(--saffron);}
+.nav-cta{background:var(--teal);color:var(--white);padding:8px 20px;border:none;border-radius:2px;font-family:var(--body);font-size:.78rem;font-weight:600;letter-spacing:.04em;transition:all .2s;}
+.nav-cta:hover{background:var(--teal2);}
+
+/* ══ HERO — SPLIT ══ */
+#hero{
+  margin-top:0;
+  display:flex;
+  min-height:auto;
+  justify-content:center;
+}
+/* Hero image panel removed */
+
+/* RIGHT — content panel */
+.hero-content-panel{
+  background:var(--cream);
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:28px 8% 28px;
+  position:relative;
+  width:100%;
+  max-width:720px;
+  margin:0 auto;
+  text-align:left;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-size:.65rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--saffron);margin-bottom:8px;
+}
+.hero-eyebrow::before{content:'';width:24px;height:1.5px;background:var(--saffron);}
+.ldot{width:6px;height:6px;background:var(--saffron);border-radius:50%;animation:ld 1.8s infinite;flex-shrink:0;}
+@keyframes ld{0%,100%{opacity:1}50%{opacity:.2}}
+
+.hero-h{
+  font-family:var(--head);
+  font-size:clamp(2.2rem,4.5vw,3.6rem);
+  font-weight:700;line-height:1.05;letter-spacing:-1px;
+  color:var(--ink);margin-bottom:4px;
+}
+
+.hero-h .line2{display:block;font-size:clamp(1.3rem,2.8vw,2rem);font-weight:600;font-style:normal;color:var(--saffron);letter-spacing:-.3px;margin-top:4px;}
+
+.hero-desc{font-size:.92rem;color:var(--ink3);max-width:520px;line-height:1.72;margin:10px 0 16px;}
+
+/* 3 mini stat pills horizontal */
+.hero-mini-stats{
+  display:flex;gap:0;
+  border:1px solid var(--cream3);
+  border-radius:2px;
+  overflow:hidden;
+  margin-bottom:16px;
+  max-width:480px;
+}
+.hms{flex:1;text-align:center;padding:12px 8px;border-right:1px solid var(--cream3);}
+.hms:last-child{border-right:none;}
+.hms-n{font-family:var(--head);font-size:1.3rem;font-weight:700;color:var(--saffron);line-height:1;}
+.hms-l{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:3px;}
+
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--ink);color:var(--white);
+  padding:14px 32px;border:none;border-radius:2px;
+  font-family:var(--head);font-size:.9rem;font-weight:700;
+  letter-spacing:.02em;transition:all .25s;
+  align-self:flex-start;
+}
+.hero-cta:hover{background:var(--saffron);transform:translateX(4px);}
+
+/* corner deco */
+.hero-corner{position:absolute;bottom:0;right:0;width:80px;height:80px;background:var(--saffron);opacity:.08;}
+
+/* ══ MARQUEE STRIP ══ */
+.strip{
+  background:var(--saffron);
+  padding:11px 0;overflow:hidden;
+}
+.strip-track{display:flex;gap:0;width:max-content;animation:stripA 18s linear infinite;}
+.strip-item{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:0 24px;border-right:1px solid rgba(255,255,255,.25);
+  font-family:var(--head);font-size:.7rem;font-style:italic;
+  color:rgba(255,255,255,.9);white-space:nowrap;
+}
+@keyframes stripA{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══ JOURNEY ══ */
+#journey{
+  display:grid;grid-template-columns:auto 1fr;
+  background:var(--cream2);
+  border-top:1px solid var(--cream3);
+}
+.journey-sidebar{
+  width:54px;
+  background:var(--teal);
+  display:flex;align-items:center;justify-content:center;
+  writing-mode:vertical-rl;text-orientation:mixed;
+  transform:rotate(180deg);
+}
+.journey-sidebar span{
+  font-family:var(--head);font-size:.7rem;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--saffron);
+  white-space:nowrap;
+}
+.journey-main{
+  display:grid;grid-template-columns:1fr 1.1fr;
+  gap:0;
+}
+.journey-text{padding:48px 5%;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--cream3);}
+.sec-label{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--cream3);}
+.sec-h{font-family:var(--head);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-.5px;margin-bottom:12px;}
+.sec-h em{font-style:italic;color:var(--saffron);}
+.sec-p{font-size:.88rem;color:var(--ink3);line-height:1.75;max-width:400px;}
+.journey-img-wrap{position:relative;overflow:hidden;min-height:320px;}
+.journey-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.journey-img-ph2{width:100%;height:100%;min-height:320px;background:var(--cream3);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;}
+/* caption bar */
+.journey-caption{position:absolute;bottom:0;left:0;right:0;background:var(--teal);padding:10px 20px;font-family:var(--head);font-size:.75rem;font-style:italic;color:rgba(255,255,255,.9);}
+
+/* ══ COACH ══ */
+#coach{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--cream3);
+}
+.coach-left{
+  background:var(--ink);
+  padding:52px 6%;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+/* big watermark letter */
+.coach-left::before{content:'M';position:absolute;right:-20px;bottom:-30px;font-family:var(--head);font-size:16rem;font-weight:900;color:rgba(255,255,255,.03);line-height:1;pointer-events:none;}
+.coach-left .sec-label{color:var(--saffron3);}
+.coach-left .sec-label::after{background:rgba(255,255,255,.1);}
+.coach-name-big{font-family:var(--head);font-size:clamp(2rem,4.5vw,3.8rem);font-weight:900;color:var(--white);line-height:.95;letter-spacing:-2px;margin-bottom:20px;}
+.coach-name-big em{display:block;font-style:italic;color:var(--saffron3);}
+.coach-roles-list{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.crl{display:flex;align-items:center;gap:10px;font-size:.85rem;color:rgba(255,255,255,.65);}
+.crl::before{content:'';width:18px;height:1.5px;background:var(--saffron);flex-shrink:0;}
+.blockquote{border-left:3px solid var(--saffron);padding:14px 18px;background:rgba(255,255,255,.04);margin-bottom:24px;}
+.blockquote p{font-family:var(--head);font-size:.95rem;font-style:italic;color:rgba(255,255,255,.75);line-height:1.65;}
+.blockquote cite{display:block;font-size:.62rem;color:var(--saffron3);font-style:normal;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:8px;}
+
+.coach-right{
+  background:var(--cream2);
+  padding:52px 6%;
+  display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid var(--cream3);
+}
+/* stats in 2x2 grid */
+.coach-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--cream3);border:1px solid var(--cream3);margin-bottom:28px;}
+.csbox{background:var(--cream);padding:22px 18px;text-align:center;}
+.csn{font-family:var(--head);font-size:2rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-1px;}
+.csl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;}
+/* promise card */
+.promise-card{background:var(--white);border:1px solid var(--cream3);border-top:3px solid var(--saffron);padding:18px 20px;}
+.promise-title{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;}
+.promise-text{font-family:var(--head);font-size:1.05rem;font-style:italic;color:var(--ink);line-height:1.5;}
+
+/* ══ TESTIMONIALS ══ */
+#testi{
+  border-top:1px solid var(--cream3);
+  padding:48px 0;
+  overflow:hidden;
+  background:var(--cream);
+}
+.testi-head{padding:0 5%;margin-bottom:20px;display:flex;align-items:baseline;gap:16px;}
+.testi-head .sec-h{margin-bottom:0;}
+.testi-count{font-family:var(--head);font-size:.8rem;font-style:italic;color:var(--muted);}
+.mr-outer{overflow:hidden;-webkit-mask:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);mask:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent);}
+.mr-track{display:flex;gap:16px;width:max-content;animation:msl 40s linear infinite;}
+.mr-track:hover{animation-play-state:paused;}
+@keyframes msl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tcard{flex:0 0 280px;border-radius:2px;overflow:hidden;flex-shrink:0;border:1px solid var(--cream3);background:var(--white);transition:all .3s;padding:22px 20px;}
+.tcard:hover{border-color:var(--saffron);transform:translateY(-4px);box-shadow:0 8px 24px rgba(212,98,10,.12);}
+.tcard-stars{color:var(--saffron);font-size:.85rem;margin-bottom:10px;letter-spacing:2px;}
+.tcard-text{font-size:.82rem;color:var(--ink3);line-height:1.7;margin-bottom:14px;font-style:italic;}
+.tcard-name{font-family:var(--head);font-size:.78rem;font-weight:700;color:var(--ink);letter-spacing:.5px;}
+.tcard-role{font-size:.68rem;color:var(--muted);margin-top:2px;}
+
+/* ══ WHAT YOU GET ══ */
+#benefits{
+  display:grid;grid-template-columns:300px 1fr;
+  border-top:1px solid var(--cream3);
+  background:var(--ink);
+}
+.benefits-sidebar{
+  padding:48px 32px;
+  border-right:1px solid rgba(255,255,255,.06);
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.benefits-sidebar .sec-label{color:var(--saffron3);}
+.benefits-sidebar .sec-label::after{background:rgba(255,255,255,.1);}
+.benefits-sidebar .sec-h{color:var(--white);font-size:clamp(1.6rem,3vw,2.4rem);}
+.benefits-sidebar .sec-h em{color:var(--saffron3);}
+.benefit-count{font-family:var(--head);font-size:5rem;font-weight:900;color:rgba(255,255,255,.05);line-height:1;margin-top:auto;}
+.benefits-cards{padding:48px 5%;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);align-content:start;}
+.bcard{background:var(--ink);padding:28px 22px;transition:background .3s;position:relative;}
+.bcard:hover{background:#211808;}
+.bcard-num{font-family:var(--head);font-size:.65rem;font-weight:600;letter-spacing:.1em;color:var(--saffron);margin-bottom:12px;}
+.bcard-title{font-family:var(--head);font-size:1rem;font-weight:700;color:var(--white);margin-bottom:7px;line-height:1.2;}
+.bcard-desc{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.65;}
+/* bottom line on hover */
+.bcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--saffron);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.bcard:hover::after{transform:scaleX(1);}
+.benefits-cta-wrap{grid-column:1/-1;padding:24px 22px;background:var(--teal);display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.benefits-cta-text{font-family:var(--head);font-size:1rem;font-weight:700;color:var(--white);}
+.btn-ink{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--white);padding:12px 24px;border:none;border-radius:2px;font-family:var(--head);font-size:.82rem;font-weight:700;letter-spacing:.04em;transition:all .2s;white-space:nowrap;}
+.btn-ink:hover{background:var(--ink2);}
+
+/* ══ NUMBERS ══ */
+#know{
+  background:var(--cream2);
+  border-top:1px solid var(--cream3);
+  padding:48px 5%;
+}
+.know-inner{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;}
+.know-table{border:1px solid var(--cream3);}
+.krow{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--cream3);background:var(--white);}
+.krow:last-child{border-bottom:none;}
+.kval{font-family:var(--head);font-size:1.8rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-1px;}
+.klbl{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:3px;}
+.kico{font-size:1.3rem;}
+.now-box{background:var(--white);border:1px solid var(--cream3);border-top:3px solid var(--saffron);padding:24px;}
+.now-title{font-family:var(--head);font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:16px;font-style:italic;}
+.now-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--cream3);}
+.nbox{background:var(--cream);padding:18px 14px;text-align:center;}
+.nval{font-family:var(--head);font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-1px;}
+.nlbl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:5px;}
+
+/* ══ FAQ ══ */
+#faq{
+  border-top:1px solid var(--cream3);
+  display:grid;grid-template-columns:280px 1fr;
+}
+.faq-sidebar{
+  background:var(--teal);
+  padding:48px 28px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.faq-sidebar .sec-label{color:rgba(255,255,255,.7);}
+.faq-sidebar .sec-label::after{background:rgba(255,255,255,.25);}
+.faq-sidebar .sec-h{color:var(--white);font-size:clamp(1.6rem,3vw,2.2rem);}
+.faq-sidebar .sec-h em{color:rgba(255,255,255,.7);}
+.faq-sidebar-sub{font-size:.82rem;color:rgba(255,255,255,.65);margin-top:10px;line-height:1.65;}
+.faq-list{padding:0;border-left:1px solid var(--cream3);}
+.fi{border-bottom:1px solid var(--cream3);}
+.fi:last-child{border-bottom:none;}
+.fq{width:100%;background:none;border:none;text-align:left;padding:18px 28px;font-family:var(--body);font-size:.88rem;font-weight:500;color:var(--ink3);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;transition:all .2s;background:var(--white);}
+.fq:hover{color:var(--saffron);background:var(--cream);}
+.fi.open .fq{color:var(--saffron);background:var(--cream2);}
+.ficon{width:22px;height:22px;border:1.5px solid var(--cream3);color:var(--saffron);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;transition:all .3s;}
+.fi.open .ficon{background:var(--teal);border-color:var(--teal);color:#fff;transform:rotate(45deg);}
+.fa{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;font-size:.82rem;color:var(--ink3);line-height:1.75;padding:0 28px;background:var(--cream2);}
+.fi.open .fa{max-height:140px;padding-bottom:16px;padding-top:4px;}
+
+/* ══ CTA BOTTOM ══ */
+#cta{
+  border-top:1px solid var(--cream3);
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:480px;
+}
+.cta-left{
+  background:var(--ink);
+  padding:52px 6%;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.cta-left::after{content:'';position:absolute;top:0;right:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--saffron),transparent);}
+.cta-h{font-family:var(--head);font-size:clamp(2rem,4vw,3.2rem);font-weight:900;color:var(--white);line-height:1.0;letter-spacing:-1.5px;margin-bottom:14px;}
+.cta-h em{display:block;font-style:italic;color:var(--saffron3);font-size:85%;}
+.cta-p{font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:22px;line-height:1.7;}
+.how-box{border-left:2px solid var(--saffron);padding:14px 18px;background:rgba(255,255,255,.03);margin-bottom:16px;}
+.how-title{font-size:.62rem;font-weight:600;color:var(--saffron3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+.how-line{font-size:.86rem;color:rgba(255,255,255,.6);line-height:2.0;}
+.how-line strong{color:var(--white);}
+.wa-num-row{display:flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid rgba(255,255,255,.08);margin-bottom:14px;}
+.wa-num-row span{font-size:.84rem;color:rgba(255,255,255,.8);font-weight:500;}
+.wa-num-row strong{color:var(--white);}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:9px;background:#25D366;color:#fff;font-family:var(--head);font-size:.9rem;font-weight:700;padding:15px;border:none;width:100%;margin-bottom:10px;transition:all .3s;letter-spacing:.02em;}
+.btn-wa:hover{background:#1fbd5a;transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.3);}
+.expect-mini{display:flex;flex-direction:column;gap:6px;}
+.exp-row{display:flex;align-items:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.45);}
+.exp-dot{width:16px;height:16px;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.5rem;color:#fff;font-weight:900;flex-shrink:0;}
+
+.cta-right{
+  background:var(--cream2);
+  padding:52px 6%;
+  display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid var(--cream3);
+}
+.cta-right-title{font-family:var(--head);font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:16px;font-style:italic;}
+.ig-btn{
+  display:flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  color:#fff;font-size:.82rem;font-weight:700;padding:13px 16px;text-decoration:none;
+  transition:all .3s;margin-bottom:12px;border-radius:2px;letter-spacing:.04em;
+}
+.ig-btn:hover{opacity:.88;transform:translateX(3px);}
+.privacy-link{display:block;text-align:center;color:var(--muted);font-size:.72rem;text-decoration:none;margin-top:8px;transition:color .2s;}
+.privacy-link:hover{color:var(--saffron);}
+/* follow box */
+.follow-box{background:var(--white);border:1px solid var(--cream3);border-left:3px solid var(--saffron);padding:16px 18px;margin-top:16px;}
+.follow-box-title{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron);margin-bottom:6px;}
+.follow-box-text{font-size:.82rem;color:var(--ink3);line-height:1.6;}
+
+/* ══ FOOTER ══ */
+footer{
+  background:var(--ink);
+  border-top:1px solid rgba(255,255,255,.06);
+  padding:28px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;
+}
+.ft{font-size:.78rem;color:rgba(255,255,255,.75);}
+.fs{font-family:var(--head);font-size:.82rem;font-style:italic;color:rgba(255,255,255,.8);}
+.fp{font-size:.72rem;color:rgba(255,255,255,.6);}
+.fp strong{color:var(--saffron);}
+footer a{color:rgba(255,255,255,.25);font-size:.72rem;text-decoration:none;transition:color .2s;}
+footer a:hover{color:var(--saffron3);}
+
+/* ══ SR ANIMATION ══ */
+.sr{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.sr.in{opacity:1;transform:translateY(0);}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr;}
+  #journey{grid-template-columns:1fr;}
+  .journey-sidebar{width:100%;height:40px;writing-mode:initial;text-orientation:initial;transform:none;padding:0 5%;}
+  .journey-main{grid-template-columns:1fr;}
+  #coach{grid-template-columns:1fr;}
+  #benefits{grid-template-columns:1fr;}
+  .benefits-sidebar{padding:36px 5%;}
+  #faq{grid-template-columns:1fr;}
+  .faq-sidebar{padding:36px 5%;}
+  .faq-list{border-left:none;border-top:1px solid var(--cream3);}
+  #cta{grid-template-columns:1fr;}
+  .cta-right{border-left:none;border-top:1px solid rgba(255,255,255,.06);}
+  .know-inner{grid-template-columns:1fr;}
+  .benefits-cta-wrap{flex-direction:column;text-align:center;}
+  footer{flex-direction:column;text-align:center;}
+}
+@media(max-width:540px){
+  .benefits-cards{grid-template-columns:1fr;}
+  .coach-stat-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- PRIVACY MODAL -->
+<div class="modal-overlay" id="privacyModal">
+  <div class="pbox">
+    <button class="mcls" onclick="closeM('privacyModal')">×</button>
+    <h3>Information We Collect</h3><p>We collect your name and phone number when you contact us through WhatsApp or our form.</p>
+    <h3>How We Use It</h3><p>Only to communicate about our training programs. Never sold to third parties.</p>
+    <h3>Your Rights</h3><p>You may access, correct, or delete your information at any time. Last updated: 2026.</p>
+  </div>
+</div>
+
+<!-- FORM MODAL -->
+<div class="modal-overlay" id="formModal">
+  <div class="fbox">
+    <button class="mcls" onclick="closeM('formModal')">×</button>
+    <div class="ftitle">Join Now ✨</div>
+    <div class="fsub">Needa will reach out within 24 hrs</div>
+    <input type="hidden" id="formSource" value=""/>
+    <div class="fg"><label>Full Name *</label><input type="text" id="m-name" placeholder="Your full name"/></div>
+    <div class="fg"><label>Phone *</label><input type="tel" id="m-phone" placeholder="10-digit number" maxlength="10" inputmode="numeric"/></div>
+    <div class="frow">
+      <div class="fg"><label>Age *</label><input type="number" id="m-age" placeholder="Age" min="15" max="60"/></div>
+      <div class="fg"><label>Gender *</label><select id="m-gender"><option value="">Select</option><option>Female</option><option>Male</option><option>Other</option></select></div>
+    </div>
+    <div class="fg"><label>Profession *</label><select id="m-profession"><option value="">Select</option><option>Student</option><option>Housewife</option><option>Working Professional</option><option>Other</option></select></div>
+    <button class="fsend" id="sendBtn" onclick="submitForm()">📲 Send to WhatsApp</button>
+    <div class="fstatus" id="formStatus"></div>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-content-panel">
+    <div class="hero-eyebrow"><span class="ldot"></span>Syed Khalid Saleem &bull; Online Earning Coach</div>
+    <!-- ✅ TITLE OPTION A — Number first -->
+    <h1 class="hero-h" id="heroTitle">
+      <span id="heroCount">0+</span>
+      Lives Changed.<br/>
+      <span class="line2">Will Yours Be Next?</span>
+    </h1>
+
+    <!-- 🔵 TITLE OPTION B — Paste karo agar yeh pasand ho:
+    <h1 class="hero-h" id="heroTitle">
+      Learn. Earn.<br/>
+      <span class="line2">Live on Your Terms.</span>
+    </h1>
+    -->
+
+    <!-- 🟡 TITLE OPTION C — Paste karo agar yeh pasand ho:
+    <h1 class="hero-h" id="heroTitle">
+      Ghar Baithe<br/>
+      <span class="line2">Online Kamaai Shuru Karo.</span>
+    </h1>
+    -->
+    <p class="hero-desc">Join India's fastest-growing online earning community. Learn real digital skills, earn from home, and build financial independence — step by step.</p>
+
+    <div class="hero-mini-stats">
+      <div class="hms"><div class="hms-n counter" data-target="2000" data-suffix="+">0+</div><div class="hms-l">Students</div></div>
+      <div class="hms"><div class="hms-n counter" data-target="3" data-suffix="+">0+</div><div class="hms-l">Years</div></div>
+      <div class="hms"><div class="hms-n">₹<span class="counter" data-target="100000" data-suffix="+">0</span></div><div class="hms-l">Monthly</div></div>
+    </div>
+
+    <button class="hero-cta" onclick="openFormModal('Hero CTA')">📲 Connect on WhatsApp →</button>
+    <div class="hero-corner"></div>
+  </div>
+</section>
+
+
+</div>
+
+<!-- ══ JOURNEY ══ -->
+<section id="journey">
+  <div class="journey-sidebar"><span>My Story</span></div>
+  <div class="journey-main">
+    <div class="journey-text sr">
+      <div class="sec-label">Journey</div>
+      <h2 class="sec-h">From Zero<br/>to <em>Freedom.</em></h2>
+      <p class="sec-p">From a complete beginner to building India's most dedicated skills community. No shortcuts. Just the right knowledge, the right mindset, and relentless execution — one skill at a time.</p>
+    </div>
+    <div class="journey-img-wrap sr" style="transition-delay:.1s">
+      <img src="https://i.ibb.co/7d2Jt5vv/IMG-20260503-WA0025.jpg" alt="My Journey" onerror="this.parentElement.innerHTML='<div class=journey-img-ph2>📸 Journey Image</div>'"/>
+      <div class="journey-caption">"Every great journey begins with a single step." — Syed Khalid Saleem</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COACH ══ -->
+<section id="coach">
+  <div class="coach-left sr">
+    <div class="sec-label">Your Mentor</div>
+    <div class="coach-name-big">Hi, I'm<br/><em>Syed Khalid Saleem</em></div>
+    <div class="coach-roles-list">
+      <div class="crl">Entrepreneur & Digital Skills Coach</div>
+      <div class="crl">Freelancer & Online Business Builder</div>
+      <div class="crl">Women Empowerment Advocate</div>
+    </div>
+    <div class="blockquote">
+      <p>"I built my income from scratch using digital skills — no fancy degree, no connections. Just the right knowledge. My mission: <strong style="color:var(--saffron3)">Every Woman Deserves Financial Freedom.</strong>"</p>
+      <cite>— Syed Khalid Saleem</cite>
+    </div>
+  </div>
+  <div class="coach-right sr" style="transition-delay:.1s">
+    <div class="sec-label" style="margin-bottom:16px;">The Numbers</div>
+    <div class="coach-stat-grid">
+      <div class="csbox"><div class="csn counter" data-target="3" data-suffix="+">0+</div><div class="csl">Years Experience</div></div>
+      <div class="csbox"><div class="csn counter" data-target="2000" data-suffix="+">0+</div><div class="csl">Students Helped</div></div>
+      <div class="csbox"><div class="csn counter" data-target="1000" data-suffix="+">0+</div><div class="csl">Entrepreneurs</div></div>
+      <div class="csbox"><div class="csn">₹<span class="counter" data-target="100000" data-suffix="+">0</span></div><div class="csl">Monthly Earned</div></div>
+    </div>
+    <div class="promise-card">
+      <div class="promise-title">🎯 My Promise to You</div>
+      <div class="promise-text">"Real Skills. Real Income. Real Freedom."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testi">
+  <div class="testi-head sr">
+    <div>
+      <div class="sec-label">Proof</div>
+      <h2 class="sec-h">Real People. <em>Real Results.</em></h2>
+    </div>
+  </div>
+  <div class="mr-outer">
+    <div class="mr-track" id="row1">
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Maine pehle socha bhi nahi tha ki main ghar se itna kama sakti hoon. Needa ma'am ne sab step by step sikhaya. Pehle mahine mein hi ₹8,000 kama liye!"</p><div class="tcard-name">Farheen</div><div class="tcard-role">Housewife, Lucknow</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Student hoon, part time mein ₹12,000 kama rahi hoon. Family bhi khush hai. Needa ma'am ka guidance ekdum real hai, koi fake promises nahi."</p><div class="tcard-name">Asiya khatoon</div><div class="tcard-role">Student, Patna</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Job ke saath saath seekha aur ab ek alag income source ban gaya. 2 mahine mein ₹25,000 extra kama liye. Bahut grateful hoon!"</p><div class="tcard-name">Aarti Singh</div><div class="tcard-role">Working Professional, Delhi</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Pehle bahut darr lagta tha online kaam karne mein. Lekin ma'am ne itne ache se sikhaya ki ab confidence aa gaya. ₹15,000 monthly kama rahi hoon."</p><div class="tcard-name">Rida khatoon</div><div class="tcard-role">Housewife, Jaipur</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"3 mahine mein meri zindagi badal gayi. Ab main financially independent hoon. Needa ma'am best mentor hain — always available, always helpful!"</p><div class="tcard-name">Sana Khan</div><div class="tcard-role">Entrepreneur, Bhopal</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Mujhe nahi pata tha ki digital skills se itna kama sakte hain. Ab ₹30,000+ monthly aa raha hai. Family ko zyada time bhi de pa rahi hoon!"</p><div class="tcard-name">Afreen khan</div><div class="tcard-role">Freelancer, Kanpur</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Community mein aane ke baad se motivation level hi alag ho gaya. Sab log ek dusre ko support karte hain. Ma'am ka approach ekdum genuine hai!"</p><div class="tcard-name">Tabassum Khatoon</div><div class="tcard-role">Student, Allahabad</div></div>
+      <!-- Duplicates for loop -->
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Maine pehle socha bhi nahi tha ki main ghar se itna kama sakti hoon. Needa ma'am ne sab step by step sikhaya. Pehle mahine mein hi ₹8,000 kama liye!"</p><div class="tcard-name">Farheen</div><div class="tcard-role">Housewife, Lucknow</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Student hoon, part time mein ₹12,000 kama rahi hoon. Family bhi khush hai. Needa ma'am ka guidance ekdum real hai, koi fake promises nahi."</p><div class="tcard-name">Asiya khatoon</div><div class="tcard-role">Student, Patna</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Job ke saath saath seekha aur ab ek alag income source ban gaya. 2 mahine mein ₹25,000 extra kama liye. Bahut grateful hoon!"</p><div class="tcard-name">Aarti Singh</div><div class="tcard-role">Working Professional, Delhi</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Pehle bahut darr lagta tha online kaam karne mein. Lekin ma'am ne itne ache se sikhaya ki ab confidence aa gaya. ₹15,000 monthly kama rahi hoon."</p><div class="tcard-name">Rida khatoon</div><div class="tcard-role">Housewife, Jaipur</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"3 mahine mein meri zindagi badal gayi. Ab main financially independent hoon. Needa ma'am best mentor hain — always available, always helpful!"</p><div class="tcard-name">Sana Khan</div><div class="tcard-role">Entrepreneur, Bhopal</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Mujhe nahi pata tha ki digital skills se itna kama sakte hain. Ab ₹30,000+ monthly aa raha hai. Family ko zyada time bhi de pa rahi hoon!"</p><div class="tcard-name">Afreen khan</div><div class="tcard-role">Freelancer, Kanpur</div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Community mein aane ke baad se motivation level hi alag ho gaya. Sab log ek dusre ko support karte hain. Ma'am ka approach ekdum genuine hai!"</p><div class="tcard-name">Tabassum Khatoon</div><div class="tcard-role">Student, Allahabad</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BENEFITS ══ -->
+<section id="benefits">
+  <div class="benefits-sidebar sr">
+    <div>
+      <div class="sec-label">What You Get</div>
+      <h2 class="sec-h">Everything<br/>to <em>Start Earning.</em></h2>
+    </div>
+    <div class="benefit-count">04</div>
+  </div>
+  <div class="benefits-cards">
+    <div class="bcard sr"><div class="bcard-num">— 01</div><div class="bcard-title">Personal Mentorship</div><p class="bcard-desc">Direct WhatsApp access to me. Real guidance whenever you need it.</p></div>
+    <div class="bcard sr" style="transition-delay:.07s"><div class="bcard-num">— 02</div><div class="bcard-title">Proven System</div><p class="bcard-desc">A complete blueprint — from zero knowledge to consistent income.</p></div>
+    <div class="bcard sr" style="transition-delay:.12s"><div class="bcard-num">— 03</div><div class="bcard-title">Live Community</div><p class="bcard-desc">Hundreds of active earners. Daily wins, support, momentum.</p></div>
+    <div class="bcard sr" style="transition-delay:.17s"><div class="bcard-num">— 04</div><div class="bcard-title">Income in Weeks</div><p class="bcard-desc">Most students see their first income within 30 days.</p></div>
+    <div class="benefits-cta-wrap sr">
+      <div class="benefits-cta-text">Ready to start your journey?</div>
+      <button class="btn-ink" onclick="openFormModal('Benefits CTA')">📲 Get Started Now →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NUMBERS ══ -->
+<section id="know">
+  <div class="sec-label sr">Track Record</div>
+  <h2 class="sec-h sr" style="margin-bottom:24px;">The <em>Numbers</em> Speak.</h2>
+  <div class="know-inner">
+    <div class="know-table sr">
+      <div class="krow"><div><div class="kval counter" data-target="3" data-suffix="+">0+</div><div class="klbl">Years Experience</div></div><div class="kico">⭐</div></div>
+      <div class="krow"><div><div class="kval counter" data-target="1000" data-suffix="+">0+</div><div class="klbl">Entrepreneurs Created</div></div><div class="kico">🚀</div></div>
+    </div>
+    <div class="now-box sr" style="transition-delay:.1s">
+      <div class="now-title">⚡ Your Turn Now</div>
+      <div class="now-grid">
+        <div class="nbox"><div class="nval counter" data-target="1600000" data-prefix="₹" data-format="full">₹0</div><div class="nlbl">Earned by Students</div></div>
+        <div class="nbox"><div class="nval counter" data-target="500" data-suffix="+">0+</div><div class="nlbl">Earning ₹50K+</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section id="faq">
+  <div class="faq-sidebar">
+    <div class="sec-label">FAQ</div>
+    <h2 class="sec-h">Questions <em>Answered.</em></h2>
+    <p class="faq-sidebar-sub">Everything you need to know before taking the leap.</p>
+  </div>
+  <div class="faq-list">
+    <div class="fi"><button class="fq" onclick="tFaq(this)">What kind of work will I be doing? <span class="ficon">+</span></button><div class="fa">Digital skills: Website Design, Graphics, Editing, Content Creation, Monetization, etc. 100% legitimate.</div></div>
+    <div class="fi"><button class="fq" onclick="tFaq(this)">Is this program legitimate & safe? <span class="ficon">+</span></button><div class="fa">Genuine training. 2000+ students earning consistently. Verify credentials anytime.</div></div>
+    <div class="fi"><button class="fq" onclick="tFaq(this)">How much time daily? <span class="ficon">+</span></button><div class="fa">Just 1-2 hours daily. Flexible around your job, studies, or family.</div></div>
+    <div class="fi"><button class="fq" onclick="tFaq(this)">When will I start earning? <span class="ficon">+</span></button><div class="fa">Within 1 month. Sustainable income in 1-2 months of consistent effort.</div></div>
+    <div class="fi"><button class="fq" onclick="tFaq(this)">Any prior experience needed? <span class="ficon">+</span></button><div class="fa">No experience needed! Step-by-step guidance from day one.</div></div>
+    <div class="fi"><button class="fq" onclick="tFaq(this)">What support after joining? <span class="ficon">+</span></button><div class="fa">Daily mentorship, 24/7 WhatsApp, weekly calls & active earner community.</div></div>
+    <div class="fi"><button class="fq" onclick="tFaq(this)">Any investment required? <span class="ficon">+</span></button><div class="fa">Nominal fee covers everything. Zero hidden costs ever.</div></div>
+    <div class="fi"><button class="fq" onclick="tFaq(this)">Can I do this with a job? <span class="ficon">+</span></button><div class="fa">Yes! Built for busy people. Learn in your free time, grow at your own pace.</div></div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section id="cta">
+  <div class="cta-left sr">
+    <h2 class="cta-h">One Message.<br/><em>One New Life.</em></h2>
+    <p class="cta-p">Financial freedom doesn't come from waiting. It starts with a single WhatsApp message today.</p>
+    <div class="how-box">
+      <div class="how-title">📲 How to Begin</div>
+      <div class="how-line">Message me on WhatsApp with:</div><br/>
+      <div class="how-line"><strong>📝 Name · 🎂 Age · 💼 Profession</strong></div>
+    </div>
+    <div class="wa-num-row"><span>📌 Save My Number: <strong>9058500991</strong></span></div>
+    <button class="btn-wa" onclick="openFormModal('CTA Button')">📲 Message on WhatsApp Now</button>
+    <div class="expect-mini">
+      <div class="exp-row"><div class="exp-dot">✓</div>Complete program details within 24 hours</div>
+      <div class="exp-row"><div class="exp-dot">✓</div>Your personal earning roadmap</div>
+    </div>
+  </div>
+  <div class="cta-right sr" style="transition-delay:.1s">
+    <div class="cta-right-title">Stay Connected with Needa</div>
+    <a href="https://www.instagram.com/khalid5.68?igsh=b3hqeHh5NXVxM2E3" target="_blank" rel="noopener" class="ig-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Follow on Instagram
+    </a>
+    <a href="#" class="privacy-link" onclick="openM('privacyModal');return false;">🔒 Privacy Policy</a>
+    <div class="follow-box">
+      <div class="follow-box-title">🌟 Our Promise</div>
+      <div class="follow-box-text">Real Skills. Real Income. Real Freedom. Join thousands of women who transformed their lives with the right guidance.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">🌟 Empower with skills • 🌈 Support every vision • 🚀 Dreams to direction</div>
+  <div class="fs">❤️ With Strength & Sincerity, Syed Khalid Saleem</div>
+  <div class="fp">Powered by <strong>Alymize</strong></div>
+</footer>
+
+<script>
+const SHEET_URL='https://script.google.com/macros/s/AKfycbx9BQKMtbJWOsa2_E3Qj1YYTLKuBgW86VrU4xDEdUxNTuWrUksJRC0l-_5OTnkXwSOR/exec';
+const WA_NUMBER='919058500991';
+const imgs=['https://i.ibb.co/FLYkdfwz/1.jpg','https://i.ibb.co/s9np0rXH/2.jpg','https://i.ibb.co/qMB0qW38/3.jpg','https://i.ibb.co/hRXFy5Hx/4.jpg','https://i.ibb.co/VYRrdXKt/5.jpg','https://i.ibb.co/VW9srR0h/6.jpg','https://i.ibb.co/SDq6W1W5/7.jpg'];
+
+/* Modal */
+function openM(id){document.getElementById(id).classList.add('active');document.body.style.overflow='hidden';}
+function closeM(id){document.getElementById(id).classList.remove('active');document.body.style.overflow='';}
+function openFormModal(src){clearF();document.getElementById('formSource').value=src||'';openM('formModal');}
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',function(e){if(e.target===this)closeM(this.id);}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeM('formModal');closeM('privacyModal');}});
+function clearF(){['m-name','m-phone','m-age','m-gender','m-profession'].forEach(id=>document.getElementById(id).value='');document.getElementById('formStatus').textContent='';const b=document.getElementById('sendBtn');b.disabled=false;b.textContent='📲 Send to WhatsApp';}
+document.getElementById('m-phone').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,10);});
+
+/* Submit */
+async function submitForm(){
+  const name=document.getElementById('m-name').value.trim();
+  const phone=document.getElementById('m-phone').value.trim();
+  const age=document.getElementById('m-age').value.trim();
+  const gender=document.getElementById('m-gender').value;
+  const profession=document.getElementById('m-profession').value;
+  const source=document.getElementById('formSource').value;
+  if(!name||!phone||!age||!gender||!profession){document.getElementById('formStatus').textContent='⚠️ Please fill all fields.';return;}
+  if(phone.length!==10){document.getElementById('formStatus').textContent='⚠️ Enter valid 10-digit number.';return;}
+  const b=document.getElementById('sendBtn');b.disabled=true;b.textContent='Opening...';
+  saveSheet({name,phone,age,gender,profession,source});
+  if(typeof fbq!=='undefined')fbq('track','Lead');
+  const msg=`Hello sir,\n\nI am interested in joining.\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nGender: ${gender}\nProfession: ${profession}\n\nPlease share next steps. Thank you!`;
+  setTimeout(()=>{window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,'_blank');setTimeout(()=>closeM('formModal'),600);},600);
+}
+async function saveSheet(d){
+  if(!SHEET_URL||SHEET_URL.includes('YOUR_'))return;
+  const p='?timestamp='+encodeURIComponent(new Date().toLocaleString('en-IN'))+'&name='+encodeURIComponent(d.name)+'&phone='+encodeURIComponent(d.phone)+'&age='+encodeURIComponent(d.age)+'&gender='+encodeURIComponent(d.gender)+'&profession='+encodeURIComponent(d.profession)+'&source='+encodeURIComponent(d.source);
+  try{await fetch(SHEET_URL+p,{method:'GET',mode:'no-cors'});}catch(e){}
+}
+
+/* Nav scroll */
+// Nav removed
+
+/* Hero count */
+(function(){
+  const el=document.getElementById('heroCount');
+  const t=100000,dur=2200,s=performance.now();
+  const ease=t=>t===1?1:1-Math.pow(2,-10*t);
+  const tick=now=>{const p=Math.min((now-s)/dur,1);el.textContent=Math.floor(ease(p)*t).toLocaleString('en-IN')+'+';if(p<1)requestAnimationFrame(tick);};
+  requestAnimationFrame(tick);
+})();
+
+/* Counter */
+function animC(el){
+  if(el.dataset.done)return;el.dataset.done='1';
+  const target=parseInt(el.dataset.target),suffix=el.dataset.suffix||'',prefix=el.dataset.prefix||'',fmt=el.dataset.format;
+  const dur=target>=100000?1800:1200,s=performance.now();
+  const ease=t=>t===1?1:1-Math.pow(2,-10*t);
+  const tick=now=>{const p=Math.min((now-s)/dur,1);const v=Math.floor(ease(p)*target);
+    if(fmt==='full'&&v>=100000)el.textContent=prefix+Math.floor(v/100000)+'L+';
+    else el.textContent=prefix+v.toLocaleString('en-IN')+suffix;
+    if(p<1)requestAnimationFrame(tick);};
+  requestAnimationFrame(tick);
+}
+
+/* Marquee */
+// Text testimonials — static HTML (no JS needed)
+
+/* FAQ */
+function tFaq(btn){const item=btn.closest('.fi'),isOpen=item.classList.contains('open');document.querySelectorAll('.fi.open').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+
+/* SR + counters via IntersectionObserver */
+const obs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.counter').forEach(animC);obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.sr').forEach(el=>obs.observe(el));
+const cobs=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){animC(e.target);cobs.unobserve(e.target);}});},{threshold:.3});
+document.querySelectorAll('.counter').forEach(el=>{if(!el.closest('.sr'))cobs.observe(el);});
+</script>
+</body>
+</html>    
