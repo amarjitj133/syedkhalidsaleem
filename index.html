@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -76,6 +77,15 @@
             border-radius: 18px; display: block; position: relative; z-index: 1;
         }
 
+        .live-badge {
+            position: absolute; top: 12px; right: 12px;
+            background: var(--red); color: white;
+            font-size: 10px; font-weight: 700; padding: 4px 10px;
+            border-radius: 20px; letter-spacing: 1px;
+            display: flex; align-items: center; gap: 5px; z-index: 2;
+        }
+        .live-dot { width: 6px; height: 6px; background: white; border-radius: 50%; animation: blink 1s ease infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
         .header h1 {
             margin-top: 22px; font-size: 28px; font-weight: 900; letter-spacing: -0.5px;
@@ -320,7 +330,7 @@
     <div class="header reveal">
         <div class="profile-wrap">
             <div class="profile-ring"></div>
-            <img src="https://i.ibb.co/HLC61230/file-000000008dcc71faac54cf02989a9643.png" alt="Syed Khalid Saleem" class="profile-img">
+            <img src="https://i.ibb.co/Ng0D8kgy/file-00000000e88c720881a5cf5c3120e642.png" alt="Syed Khalid Saleem" class="profile-img">
             <div class="live-badge"><div class="live-dot"></div> LIVE</div>
         </div>
         <h1>Syed Khalid Saleem</h1>
